@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breitband-Simulator</title>
+    <link rel="stylesheet" href="./bs/style.css">
+</head>
+<body>
+    <!-- BayernLab Logo -->
+    <img src="./bs/bayernlab_logo.png" alt="BayernLab Logo" class="logo">
+
+    <div class="container">
+        <h1>Breitband-Simulator</h1>
+        <p>Drücke einen Button, um den Download zu simulieren:</p>
+        <div class="speed-option">
+            <button id="btn-3mb" onclick="startAllDownloads(3, this)">pdf Dokument<br>(3MB)</button>
+            <button id="btn-25mb" onclick="startAllDownloads(25, this)">mp3 Musikdatei<br>(25MB)</button>
+            <button id="btn-500mb" onclick="startAllDownloads(500, this)">Fotoalbum<br>(500MB)</button>
+            <button id="btn-2gb" onclick="startAllDownloads(2000, this)">HD Kinofilm<br>(2GB)</button>
+            <button id="btn-8gb" onclick="startAllDownloads(8000, this)">4K Kinofilm<br>(8GB)</button>
+            <button id="btn-32gb" onclick="startAllDownloads(32000, this)">Videospiel<br>(32GB)</button>
+        </div>
+
+        <div class="result" id="result"></div>
+        <div class="progress-container">
+            <div class="label">16 Mbit/s (DSL 16)</div>
+            <div class="progress-bar" id="progress-bar-16"></div>
+            <div class="time" id="time-16"></div>
+        </div>
+        <div class="progress-container">
+            <div class="label">100 Mbit/s (DSL 100)</div>
+            <div class="progress-bar" id="progress-bar-100"></div>
+            <div class="time" id="time-100"></div>
+        </div>
+        <div class="progress-container">
+            <div class="label">400 Mbit/s (DSL 400)</div>
+            <div class="progress-bar" id="progress-bar-400"></div>
+            <div class="time" id="time-400"></div>
+        </div>
+        <div class="progress-container">
+            <div class="label">1 GBit/s (4G / LTE)</div>
+            <div class="progress-bar" id="progress-bar-1000"></div>
+            <div class="time" id="time-1000"></div>
+        </div>
+        <div class="progress-container">
+            <div class="label">10 GBit/s (5G)</div>
+            <div class="progress-bar" id="progress-bar-10000"></div>
+            <div class="time" id="time-10000"></div>
+        </div>
+    </div>
+
+    <script src="./bs/bs.js"></script>
+</body>
+</html>

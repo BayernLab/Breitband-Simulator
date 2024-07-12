@@ -1,0 +1,121 @@
+@font-face{ 
+  font-family: 'Sansation';
+  src: url('Sansation_Bold.ttf') format('truetype');
+}
+
+:root {
+    --primary-color: #00BFFF; /* Bayerisches Blau */
+    --secondary-color: #009ACD; /* Dunkleres Blau für aktiven Zustand */
+    --background-color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 120px; /* Platz für das Logo */
+    position: relative; /* Positionierung für das Logo */
+    background-color: var(--background-color)
+}
+
+h1 {
+    font-family: 'Sansation', sans-serif;
+    color: var(--primary-color);
+    font-size: 4em;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 600px; /* Maximale Breite des Inhalts */
+    padding: 0 10px; /* Etwas Padding für kleine Bildschirme */
+}
+
+.speed-option {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.speed-option button {
+    background-color: var(--primary-color); /* Verwenden der primären Farbe */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 200px; /* Einheitliche Breite */
+    transition: background-color 0.3s;
+    position: relative; /* Relative Position für das Platzieren des Pfeils */
+}
+
+.speed-option button.active {
+    background-color: var(--secondary-color); /* Verwenden der sekundären Farbe */
+}
+
+.speed-option button:hover {
+    background-color: var(--secondary-color); /* Etwas dunkleres Blau beim Hover */
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px auto;
+    position: relative;
+}
+
+.progress-bar {
+    height: 30px;
+    width: 0;
+    background-color: var(--primary-color); /* Verwenden der primären Farbe */
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+
+.label {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: left;
+    padding-left: 10px;
+    color: black;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.time {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 10px;
+    text-align: right;
+    line-height: 30px;
+    color: black;
+    font-weight: bold;
+}
+
+.logo {
+    position: absolute;
+    top: -100px; /* Abstand nach oben */
+    right: 10px; /* Abstand nach rechts */
+    max-width: 500px; /* Maximale Breite des Logos */
+    width: 100%; /* Volle Breite auf kleinen Bildschirmen */
+    height: auto; /* Höhe automatisch anpassen */
+}
+
+@media (max-width: 600px) {
+    .speed-option button {
+        width: 100%; /* Volle Breite auf kleinen Bildschirmen */
+        margin: 10px 0; /* Abstand oben und unten */
+    }
+}
