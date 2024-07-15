@@ -15,6 +15,8 @@ function startAllDownloads(fileSize, button) {
     intervals = [];
 
     // Fortschrittsbalken und Texte zurücksetzen
+    resetProgressBar('progress-bar-56', 'time-56');
+    resetProgressBar('progress-bar-128', 'time-128');
     resetProgressBar('progress-bar-16', 'time-16');
     resetProgressBar('progress-bar-100', 'time-100');
     resetProgressBar('progress-bar-400', 'time-400');
@@ -25,6 +27,8 @@ function startAllDownloads(fileSize, button) {
     button.classList.add('active');
 
     // Neue Downloads starten
+    simulateDownload(0.056, fileSize, 'progress-bar-56', 'time-56');
+    simulateDownload(0.128, fileSize, 'progress-bar-128', 'time-128');
     simulateDownload(16, fileSize, 'progress-bar-16', 'time-16');
     simulateDownload(100, fileSize, 'progress-bar-100', 'time-100');
     simulateDownload(400, fileSize, 'progress-bar-400', 'time-400');
@@ -50,7 +54,7 @@ function simulateDownload(speed, fileSize, barId, timeId) {
     
         if (width >= 100) {
             clearInterval(interval);
-            timeDisplay.textContent = formatTime(timeInSeconds);
+            //timeDisplay.textContent = formatTime(timeInSeconds);
         } else {
             width++;
             progressBar.style.width = width + '%';
@@ -58,27 +62,32 @@ function simulateDownload(speed, fileSize, barId, timeId) {
         }
 
     }, intervalTime);
-    //timeDisplay.textContent = formatTime(timeInSeconds);
+    timeDisplay.textContent = formatTime(timeInSeconds);
 
     // Intervalle speichern, um sie später löschen zu können
     intervals.push(interval);
 }
 
 function formatTime(seconds) {
-    if (seconds > 3600) {
-        // Mehr als 60 Minuten: Stunden, Minuten und Sekunden anzeigen
+    if (seconds >= 86400) { // Mehr als oder gleich 24 Stunden
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+        return `${days}d ${hours}h ${minutes}m ${remainingSeconds.toFixed(0)}s`;
+    } else if (seconds >= 3600) { // Mehr als oder gleich 1 Stunde
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
         const remainingSeconds = seconds % 60;
-        return `${hours}h ${minutes}min ${remainingSeconds}sek`;
-    } else if (seconds > 60) {
-        // Mehr als 60 Sekunden: Minuten und Sekunden anzeigen
+        return `${hours}h ${minutes}m ${remainingSeconds.toFixed(0)}s`;
+    } else if (seconds >= 60) { // Mehr als oder gleich 1 Minute
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = seconds % 60;
-        return `${minutes}min ${remainingSeconds}sek`;
-    } else {
-        // Weniger als 60 Sekunden: Nur Sekunden anzeigen
-        return `${seconds}sek`;
+        return `${minutes}m ${remainingSeconds.toFixed(0)}s`;
+    } else if (seconds >= 1) { // Mehr als oder gleich 1 Sekunde
+        return `${seconds.toFixed(0)}s`;
+    } else { // Weniger als 1 Sekunde
+        return `${(seconds * 1000).toFixed(0)}ms`;
     }
 }
 
