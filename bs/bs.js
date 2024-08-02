@@ -17,11 +17,13 @@ function startAllDownloads(fileSize, button) {
     // Fortschrittsbalken und Texte zurücksetzen
     resetProgressBar('progress-bar-56', 'time-56');
     resetProgressBar('progress-bar-128', 'time-128');
-    resetProgressBar('progress-bar-16', 'time-16');
+    resetProgressBar('progress-bar-10', 'time-10');
+    resetProgressBar('progress-bar-30', 'time-30');
     resetProgressBar('progress-bar-100', 'time-100');
-    resetProgressBar('progress-bar-400', 'time-400');
+    resetProgressBar('progress-bar-250', 'time-250');
     resetProgressBar('progress-bar-1000', 'time-1000');
-    resetProgressBar('progress-bar-10000', 'time-10000');
+    resetProgressBar('progress-bar-2000', 'time-2000');
+//    resetProgressBar('progress-bar-10000', 'time-10000');
 
     // Aktiviere den Button visuell
     button.classList.add('active');
@@ -29,11 +31,13 @@ function startAllDownloads(fileSize, button) {
     // Neue Downloads starten
     simulateDownload(0.056, fileSize, 'progress-bar-56', 'time-56');
     simulateDownload(0.128, fileSize, 'progress-bar-128', 'time-128');
-    simulateDownload(16, fileSize, 'progress-bar-16', 'time-16');
+    simulateDownload(10, fileSize, 'progress-bar-10', 'time-10');
+    simulateDownload(30, fileSize, 'progress-bar-30', 'time-30');
     simulateDownload(100, fileSize, 'progress-bar-100', 'time-100');
-    simulateDownload(400, fileSize, 'progress-bar-400', 'time-400');
+    simulateDownload(250, fileSize, 'progress-bar-250', 'time-250');
     simulateDownload(1000, fileSize, 'progress-bar-1000', 'time-1000');
-    simulateDownload(10000, fileSize, 'progress-bar-10000', 'time-10000');
+    simulateDownload(2000, fileSize, 'progress-bar-2000', 'time-2000');
+//    simulateDownload(10000, fileSize, 'progress-bar-10000', 'time-10000');
 }
 
 function resetProgressBar(barId, timeId) {
